@@ -34,7 +34,7 @@
 
         <p>We created Parquet to make the advantages of compressed, efficient columnar data representation available to any project in the Hadoop ecosystem, regardless of the choice of data processing framework, data model, or programming language.</p>
         
-        <p>Parquet is built from the ground up with complex <strong>nested data structures</strong> in mind, and uses the repetition/definition level approach to encoding such data structures, as popularized by Google Dremel. We believe this approach is superior to simple flattening of nested name spaces.</p>
+        <p>Parquet is built from the ground up with complex nested data structures in mind, and uses the repetition/definition level approach to encoding such data structures, as popularized by Google Dremel. We believe this approach is superior to simple flattening of nested name spaces.</p>
         
         <p>Parquet is built to support very efficient compression and encoding schemes. Parquet allows compression schemes to be specified on a per-column level, and is future-proofed to allow adding more encodings as they are invented and implemented. We separate the concepts of encoding and compression, allowing parquet consumers to implement operators that work directly on encoded data without paying decompression and decoding penalty when possible.</p>
 
