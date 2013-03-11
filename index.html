@@ -32,15 +32,39 @@
 
         <p>Parquet is a columnar storage format for Hadoop.</p>
 
-        <p>We created Parquet to make the advantages of compressed, efficient columnar data representation available to any project in the Hadoop ecosystem.</p>
-
+        <p>We created Parquet to make the advantages of compressed, efficient columnar data representation available to any project in the Hadoop ecosystem, regardless of the choice of data processing framework, data model, or programming language.</p>
+        
         <p>Parquet is built from the ground up with complex <strong>nested data structures</strong> in mind, and uses the repetition/definition level approach to encoding such data structures, as popularized by Google Dremel. We believe this approach is superior to simple flattening of nested name spaces.</p>
+        
+        <p>Parquet is built to support very efficient compression and encoding schemes. Parquet allows compression schemes to be specified on a per-column level, and is future-proofed to allow adding more encodings as they are invented and implemented. We separate the concepts of encoding and compression, allowing parquet consumers to implement operators that work directly on encoded data without paying decompression and decoding penalty when possible.</p>
 
-        <p>Parquet is built to support <strong>very efficient compression and encoding schemes</strong>. Multiple projects have demonstrated the performance impact of applying the right compression and encoding scheme to the data. Parquet allows compression schemes to be specified on a per-column level, and is future-proofed to allow adding more encodings as they are invented and implemented. </p>
+        <p>Parquet is built to be used by anyone. The Hadoop ecosystem is rich with data processing frameworks, and we are not interested in playing favorites. We believe that an efficient, well-implemented columnar storage substrate should be useful to all frameworks without the cost of extensive and difficult to set up dependencies.
+</p>
 
-        <p>Parquet is built to be used by anyone. The Hadoop ecosystem is rich with data processing frameworks, and we are not interested in playing favorites. We believe that an efficient, well-implemented columnar storage substrate should be <strong>useful to all frameworks without the cost of extensive and difficult to set up dependencies</strong>. </p>
+        <p>The initial code, available at https://github.com/Parquet, defines the file format (<a href="https://github.com/parquet/parquet-format">parquet-format</a>), provides Java building blocks for processing columnar data, and implements Hadoop Input/Output Formats, Pig Storers/Loaders, and an example of a complex integration -- Input/Output formats that can convert Parquet-stored data directly to and from Thrift objects (<a href="https://github.parquet/parquet-mr">parquet-mr</a>).</p> 
 
-        <p>Copyright 2013 Twitter, Cloudera and other contributors.</p>
+        <p>A preview version of Parquet support will be available in Cloudera's Impala 0.7.</p>
+
+        <p>With Impala's current preview implementation, we see a roughly 10x performance 
+        improvement compared to the other supported formats.  We observe this performance 
+        benefit across multiple scale factors (10GB/node, 100GB/node, 1TB/node).  We believe 
+        there is still a lot of room for improvement in the implementation and we'll share 
+        more thorough results following the 0.7 release.</p>
+        
+        <p>Twitter is starting to convert some of its major data source to Parquet in order to take advantage of the compression and deserialization savings.<p>
+
+        <p>Parquet is currently under heavy development. Parquet's near-term roadmap includes:<ul>
+        <li>Hive SerDes (Criteo)
+        <li>Cascading Taps (Criteo)
+        <li>Support for dictionary encoding, zigzag encoding, and RLE encoding of data (Cloudera and Twitter)
+        <li>Further improvements to Pig support (Twitter)</ul>
+          
+        <p>We've also heard requests to provide an Avro container layer, similar to what we do with Thrift. Seeking volunteers!</p>
+
+        <p>We welcome all feedback, patches, and ideas. We plan to contribute Parquet to the Apache Incubator when
+        the development is farther along.</p>
+        
+        <p>Parquet is Copyright 2013 Twitter, Cloudera and other contributors.</p>
 
         <p>Licensed under the Apache License, Version 2.0: <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
       </section>
